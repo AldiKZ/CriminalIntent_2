@@ -10,11 +10,12 @@ class MainActivity : AppCompatActivity() {
 
         val currentFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
         if (currentFragment == null) {
-            val fragment = CrimeFragment()
+            val fragment = CrimeListFragment.newInstance()
             supportFragmentManager.beginTransaction().add(R.id.fragment_container, fragment).commit()
             /* Транзакции фрагментов исп. для добавления, удаления, замены, присоединения, отсоединения
             * фрагмента в списке фрагментов.
             * Данный код означает: создать новую транзакцию фрагмента, добавить в нее новый фрагмент и закрепить */
         }
     }
+
 }
