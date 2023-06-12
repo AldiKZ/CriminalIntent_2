@@ -1,9 +1,12 @@
 package com.example.criminalintent
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import java.util.UUID
 
-class MainActivity : AppCompatActivity() {
+private const val TAG = "MainActivity"
+class MainActivity : AppCompatActivity(), CrimeListFragment.Callbacks {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crime)
@@ -16,6 +19,13 @@ class MainActivity : AppCompatActivity() {
             * фрагмента в списке фрагментов.
             * Данный код означает: создать новую транзакцию фрагмента, добавить в нее новый фрагмент и закрепить */
         }
+    }
+
+    override fun onCrimeSelected(crimeId: UUID) {
+        val fragment = CrimeFragment()
+        supportFragmentManager.beginTransaction()
+            .addToBackStack(null) // возвращает обратно при нажатии "Назад"
+            .replace(R.id.fragment_container, fragment).commit()
     }
 
 }

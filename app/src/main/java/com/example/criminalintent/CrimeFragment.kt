@@ -10,8 +10,9 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import java.util.UUID
 
-
+private const val ARG_CRIME_ID = "crime_id"
 class CrimeFragment : Fragment() {
     private lateinit var crime: Crime
     private lateinit var titleField: EditText
@@ -68,6 +69,11 @@ class CrimeFragment : Fragment() {
         titleField.addTextChangedListener(titleWatcher)
         solvedCheckBox.apply {
             setOnCheckedChangeListener { _, isChecked -> crime.isSolved = isChecked }
+        }
+    }
+    companion object {
+        fun newInstance(crimeId: UUID): CrimeFragment {
+            val args =
         }
     }
 }
