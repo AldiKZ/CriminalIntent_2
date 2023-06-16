@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity(), CrimeListFragment.Callbacks {
     }
 
     override fun onCrimeSelected(crimeId: UUID) {
-        val fragment = CrimeFragment()
+        val fragment = CrimeFragment.newInstance(crimeId)
         supportFragmentManager.beginTransaction()
             .addToBackStack(null) // возвращает обратно при нажатии "Назад"
             .replace(R.id.fragment_container, fragment).commit()
